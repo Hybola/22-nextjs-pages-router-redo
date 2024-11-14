@@ -6,12 +6,13 @@ export default async function handler(req, res) {
       success: false,
       message: "405: method is not allowed. Please make a POST request",
     });
-  const contactData = {
-    fullName: "Jinny",
-    email: "jinny@test.com",
-    subject: "booking",
-    message: "Hai",
-  };
+  //   const contactData = {
+  //     fullName: "Jinny",
+  //     email: "jinny@test.com",
+  //     subject: "booking",
+  //     message: "Hai",
+  //   };
+  const contactData = JSON.parse(req.body);
   const { error } = await supabase.from("contact").insert([contactData]);
   if (error)
     return res.status(500).json({
